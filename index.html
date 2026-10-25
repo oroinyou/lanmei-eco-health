@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="澜湄同源：面向澜沧江—湄公河流域的跨境生态与公共健康科普平台。">
+  <meta name="theme-color" content="#2E7D32">
+  <title>澜湄同源·跨境生态与健康智脑</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232E7D32'/%3E%3Cpath d='M45 14C29 16 18 25 18 39c0 5 3 9 8 10 12 3 23-9 21-35-1 0-2 0-2 0Z' fill='%23E8F5E9'/%3E%3Cpath d='M20 48c7-12 14-19 24-26' fill='none' stroke='%23E8F5E9' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --forest: #2E7D32;
+      --forest-deep: #143B25;
+      --forest-dark: #0E2A1D;
+      --forest-soft: #5C9362;
+      --mint: #E8F5E9;
+      --mint-strong: #D8EFDA;
+      --paper: #F4F7F3;
+      --card: #FFFFFF;
+      --ink: #14251B;
+      --muted: #65766A;
+      --line: rgba(46, 125, 50, 0.13);
+      --line-soft: rgba(46, 125, 50, 0.08);
+      --danger: #C62828;
+      --gold: #C2A15A;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --shadow-soft: 0 30px 70px -52px rgba(20, 59, 37, 0.55);
+      --font-sans: "Aptos", "Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei", "PingFang SC", "Leelawadee UI", "Noto Sans Thai", sans-serif;
+      --font-display: "Iowan Old Style", "Palatino Linotype", "Songti SC", "STSong", "Georgia", serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image:
+        radial-gradient(900px 440px at 2% -8%, rgba(187, 220, 189, 0.38), transparent 64%),
+        radial-gradient(760px 460px at 98% 8%, rgba(214, 235, 212, 0.5), transparent 66%),
+        linear-gradient(180deg, #F7F9F5 0%, #F2F5F1 60%, #F6F8F4 100%);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .page-shell {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 24px 34px 44px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 4px 2px 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      flex: 0 0 52px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.42), transparent 34%),
+        linear-gradient(145deg, #3D9142, #1D6127);
+      box-shadow:
+        0 14px 24px -16px rgba(20, 59, 37, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      font-size: 25px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.58rem;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: 0.015em;
+      color: var(--forest-deep);
+    }
+
+    .brand-sub {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 0 0 auto;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 14px 34px -30px rgba(20, 59, 37, 0.6);
+    }
+
+    .lang-btn {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: #647368;
+      background: transparent;
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      transition:
+        color 0.22s ease,
+        background-color 0.22s ease,
+        box-shadow 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--forest);
+      background: var(--mint);
+    }
+
+    .lang-btn.is-active {
+      color: #FFFFFF;
+      background: var(--forest);
+      box-shadow: 0 8px 18px -12px rgba(46, 125, 50, 0.85);
+    }
+
+    .lang-btn:focus-visible {
+      outline: 3px solid rgba(46, 125, 50, 0.3);
+      outline-offset: 2px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 224px;
+      align-items: end;
+      gap: clamp(28px, 4vw, 64px);
+      padding: clamp(30px, 4vw, 52px);
+      overflow: hidden;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 36px;
+      background:
+        radial-gradient(620px 300px at 91% 4%, rgba(139, 190, 141, 0.3), transparent 66%),
+        radial-gradient(500px 280px at 5% 102%, rgba(46, 125, 50, 0.11), transparent 70%),
+        linear-gradient(118deg, #FAFDF9 0%, #EDF6EA 56%, #FBFDF9 100%);
+      box-shadow:
+        0 30px 70px -56px rgba(20, 59, 37, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--forest);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: var(--forest);
+      box-shadow: 0 0 0 5px rgba(46, 125, 50, 0.1);
+    }
+
+    .hero h1 {
+      max-width: 30ch;
+      margin-top: 20px;
+      color: var(--forest-deep);
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 3.9vw, 3.85rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      white-space: pre-line;
+      text-wrap: balance;
+    }
+
+    .hero-desc {
+      max-width: 61ch;
+      margin-top: 18px;
+      color: #52665A;
+      font-size: 0.96rem;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-stats {
+      display: grid;
+      align-content: end;
+      gap: 0;
+      padding-left: 28px;
+      border-left: 1px solid rgba(46, 125, 50, 0.16);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 0;
+    }
+
+    .stat + .stat {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(46, 125, 50, 0.11);
+    }
+
+    .stat strong {
+      color: var(--forest);
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.45;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 22px;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: clamp(22px, 2.4vw, 30px);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background:
+        radial-gradient(360px 160px at 102% -2%, rgba(232, 245, 233, 0.9), transparent 72%),
+        linear-gradient(180deg, #FFFFFF 0%, #FCFEFC 100%);
+      box-shadow:
+        var(--shadow-soft),
+        inset 0 1px 0 #FFFFFF;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .panel-kicker {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 8px;
+      color: var(--forest-soft);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .panel-kicker::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      flex: 0 0 5px;
+      border-radius: 50%;
+      background: var(--forest-soft);
+    }
+
+    .panel h2 {
+      color: var(--forest-deep);
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2vw, 1.82rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      overflow-wrap: anywhere;
+    }
+
+    .panel-desc {
+      max-width: 54ch;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .count-badge {
+      flex: 0 0 auto;
+      max-width: 58%;
+      padding: 7px 11px;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 999px;
+      color: var(--forest);
+      background: var(--mint);
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    /* —— 全宽湄公河流域分布图卡片（纯 CSS 蜿蜒河流 + 流域节点） —— */
+    .river-map-card {
+      display: flex;
+      flex-direction: column;
+      margin-top: 22px;
+      padding: 14px 22px;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 30px;
+      background:
+        radial-gradient(680px 210px at 8% -18%, rgba(139, 190, 141, 0.3), transparent 66%),
+        radial-gradient(520px 200px at 96% 118%, rgba(46, 125, 50, 0.12), transparent 70%),
+        linear-gradient(118deg, #FAFDF9 0%, #EDF6EA 58%, #FBFDF9 100%);
+      box-shadow:
+        0 30px 70px -56px rgba(20, 59, 37, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+
+    .river-map-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px 18px;
+      padding: 0 2px;
+    }
+
+    .river-map-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .river-map-kicker {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--forest-soft);
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .river-map-kicker::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      flex: 0 0 5px;
+      border-radius: 50%;
+      background: var(--forest-soft);
+    }
+
+    .river-map-card h2 {
+      color: var(--forest-deep);
+      font-family: var(--font-display);
+      font-size: clamp(1.12rem, 1.6vw, 1.34rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      overflow-wrap: anywhere;
+    }
+
+    .river-map-head-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      margin-left: auto;
+      padding-bottom: 2px;
+      text-align: right;
+    }
+
+    .river-map-flow {
+      color: var(--forest-soft);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .river-map-hint {
+      color: var(--forest);
+      font-size: 0.68rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .river-stage {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      grid-template-rows: 36px 96px 36px;
+      margin-top: 12px;
+    }
+
+    .river-arc {
+      grid-row: 2 / 3;
+      min-width: 0;
+      border: 6px solid transparent;
+      border-radius: 50%;
+      animation: riverShimmer 4.2s ease-in-out infinite;
+    }
+
+    .river-arc.is-dip {
+      border-bottom-color: #4E9DC9;
+    }
+
+    .river-arc.is-crest {
+      border-top-color: #4E9DC9;
+    }
+
+    @keyframes riverShimmer {
+      0%,
+      100% {
+        filter: drop-shadow(0 0 4px rgba(78, 157, 201, 0.35));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 10px rgba(78, 157, 201, 0.75));
+      }
+    }
+
+    .river-node {
+      grid-row: 1 / -1;
+      place-self: center;
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      width: clamp(52px, 8vw, 78px);
+      aspect-ratio: 1 / 1;
+      padding: 4px;
+      border: 2px solid rgba(46, 125, 50, 0.24);
+      border-radius: 50%;
+      color: var(--forest-deep);
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.9), transparent 46%),
+        linear-gradient(145deg, #FFFFFF 0%, #EFF7EE 100%);
+      box-shadow:
+        0 12px 24px -16px rgba(20, 59, 37, 0.5),
+        inset 0 1px 0 #FFFFFF;
+      transition:
+        transform 0.24s ease,
+        box-shadow 0.24s ease,
+        border-color 0.24s ease,
+        color 0.24s ease;
+    }
+
+    .river-node:hover {
+      transform: translateY(-4px) scale(1.05);
+      border-color: rgba(46, 125, 50, 0.55);
+      box-shadow:
+        0 0 0 8px rgba(46, 125, 50, 0.13),
+        0 0 22px rgba(94, 176, 110, 0.45),
+        0 16px 30px -16px rgba(20, 59, 37, 0.55);
+    }
+
+    .river-node:focus-visible {
+      outline: 3px solid rgba(46, 125, 50, 0.32);
+      outline-offset: 3px;
+    }
+
+    .river-node.is-active {
+      color: #FFFFFF;
+      border-color: rgba(29, 97, 39, 0.55);
+      background:
+        radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.26), transparent 42%),
+        linear-gradient(145deg, #3F9144 0%, #1D6127 100%);
+      box-shadow:
+        0 0 0 8px rgba(46, 125, 50, 0.18),
+        0 0 26px rgba(78, 154, 89, 0.5),
+        0 18px 34px -18px rgba(20, 59, 37, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transform: translateY(-4px) scale(1.06);
+    }
+
+    .river-node-name {
+      font-size: clamp(0.46rem, 1.4vw, 0.7rem);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: 0.01em;
+      text-align: center;
+      text-wrap: balance;
+      overflow-wrap: break-word;
+    }
+
+    .river-stage-label {
+      grid-column: 8 / 11;
+      grid-row: 3 / 4;
+      justify-self: end;
+      align-self: end;
+      color: var(--forest-soft);
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      line-height: 1;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    .species-grid {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .species-card {
+      appearance: none;
+      display: grid;
+      grid-template-columns: minmax(118px, 35%) minmax(0, 1fr);
+      flex: 1;
+      gap: 17px;
+      width: 100%;
+      min-height: 176px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      color: var(--ink);
+      background: linear-gradient(150deg, #FCFEFC 0%, #F7FBF6 100%);
+      box-shadow: 0 14px 28px -26px rgba(20, 59, 37, 0.42);
+      text-align: left;
+      transition:
+        transform 0.26s cubic-bezier(0.2, 0.7, 0.2, 1),
+        box-shadow 0.26s ease,
+        border-color 0.26s ease;
+    }
+
+    .species-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(46, 125, 50, 0.26);
+      box-shadow: 0 24px 40px -30px rgba(20, 59, 37, 0.56);
+    }
+
+    .species-card:focus-visible {
+      outline: 3px solid rgba(46, 125, 50, 0.34);
+      outline-offset: 3px;
+    }
+
+    .species-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 148px;
+      padding: 8px;
+      overflow: hidden;
+      border-radius: 18px;
+      color: #FFFFFF;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 10px 24px -20px rgba(20, 59, 37, 0.78);
+    }
+
+    .photo-frame {
+      display: grid;
+      grid-template: 1fr / 1fr;
+      overflow: hidden;
+    }
+
+    .species-photo-frame {
+      flex: 1;
+      min-height: 108px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .species-photo,
+    .species-photo-fallback {
+      grid-area: 1 / 1;
+      min-width: 0;
+    }
+
+    .species-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .species-photo-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .species-photo-fallback,
+    .modal-photo-fallback {
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+
+    .photo-frame.is-failed .species-photo-fallback,
+    .photo-frame.is-failed .modal-photo-fallback {
+      opacity: 1;
+    }
+
+    .species-emoji {
+      font-size: clamp(2.5rem, 5.2vw, 3.7rem);
+      line-height: 1;
+      filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.24));
+    }
+
+    .species-fallback-note {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.5rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      overflow-wrap: anywhere;
+    }
+
+    .species-sci {
+      align-self: center;
+      padding: 0 3px 1px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.53rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+      text-align: center;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .species-copy {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 10px 8px 9px 0;
+    }
+
+    .micro-label {
+      color: var(--forest-soft);
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .species-name {
+      margin-top: 5px;
+      color: var(--forest-deep);
+      font-family: var(--font-display);
+      font-size: clamp(1.22rem, 1.8vw, 1.48rem);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      overflow-wrap: anywhere;
+    }
+
+    .species-short {
+      margin-top: 8px;
+      color: #5C6D61;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .detail-cue {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 13px;
+      color: var(--forest);
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .detail-arrow {
+      display: inline-block;
+      transition: transform 0.24s ease;
+    }
+
+    .species-card:hover .detail-arrow {
+      transform: translateX(4px);
+    }
+
+    .theme-elephant {
+      background:
+        radial-gradient(circle at 76% 10%, rgba(255, 255, 255, 0.3), transparent 34%),
+        linear-gradient(145deg, #0B3524 0%, #286E39 55%, #8BC58B 112%);
+    }
+
+    .theme-peafowl {
+      background:
+        radial-gradient(circle at 72% 12%, rgba(255, 245, 191, 0.34), transparent 33%),
+        linear-gradient(145deg, #0D3933 0%, #157766 54%, #B6A14F 118%);
+    }
+
+    .theme-mosquito {
+      background:
+        radial-gradient(circle at 75% 10%, rgba(255, 255, 255, 0.25), transparent 31%),
+        linear-gradient(145deg, #182E2A 0%, #3E705C 54%, #B7CBA3 115%);
+    }
+
+    .theme-monkey {
+      background:
+        radial-gradient(circle at 74% 8%, rgba(255, 255, 255, 0.28), transparent 32%),
+        linear-gradient(145deg, #20372A 0%, #67795E 55%, #D4DDC5 118%);
+    }
+
+    .theme-tiger {
+      background:
+        radial-gradient(circle at 74% 10%, rgba(255, 237, 192, 0.32), transparent 32%),
+        linear-gradient(145deg, #26311E 0%, #775D27 56%, #D5AC62 116%);
+    }
+
+    .theme-tree {
+      background:
+        radial-gradient(circle at 74% 8%, rgba(255, 255, 255, 0.26), transparent 32%),
+        linear-gradient(145deg, #072E20 0%, #176A45 55%, #8BCB9A 118%);
+    }
+
+    .health-panel {
+      min-height: 100%;
+    }
+
+    .health-stack {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 2px;
+    }
+
+    .health-card {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      padding: 21px 22px;
+      border: 1px solid rgba(46, 125, 50, 0.1);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(260px 150px at 100% 0%, rgba(216, 239, 218, 0.92), transparent 74%),
+        linear-gradient(145deg, #FBFEFB 0%, #F1F8F0 100%);
+      box-shadow: 0 14px 30px -28px rgba(20, 59, 37, 0.5);
+      transition:
+        transform 0.26s cubic-bezier(0.2, 0.7, 0.2, 1),
+        box-shadow 0.26s ease,
+        border-color 0.26s ease;
+    }
+
+    .health-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(46, 125, 50, 0.22);
+      box-shadow: 0 24px 40px -32px rgba(20, 59, 37, 0.55);
+    }
+
+    .health-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .health-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border: 1px solid rgba(46, 125, 50, 0.1);
+      border-radius: 16px;
+      background: linear-gradient(145deg, #E7F4E8, #FFFFFF);
+      box-shadow:
+        inset 0 1px 0 #FFFFFF,
+        0 8px 16px -16px rgba(20, 59, 37, 0.55);
+      font-size: 1.52rem;
+      line-height: 1;
+    }
+
+    .health-title-group {
+      min-width: 0;
+    }
+
+    .health-tag {
+      display: block;
+      color: var(--forest-soft);
+      font-size: 0.59rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .health-card h3 {
+      margin-top: 2px;
+      color: var(--forest-deep);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      overflow-wrap: anywhere;
+    }
+
+    .health-watermark {
+      margin-left: auto;
+      color: var(--forest);
+      font-size: 1.65rem;
+      line-height: 1;
+      opacity: 0.17;
+    }
+
+    .health-lead {
+      margin-top: 13px;
+      color: #405746;
+      font-size: 0.84rem;
+      font-weight: 650;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .tip-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: #5B6C60;
+      font-size: 0.8rem;
+      line-height: 1.62;
+      overflow-wrap: anywhere;
+    }
+
+    .tip-dot {
+      width: 5px;
+      height: 5px;
+      flex: 0 0 5px;
+      margin-top: 0.57em;
+      border-radius: 50%;
+      background: var(--forest-soft);
+      box-shadow: 0 0 0 3px rgba(92, 147, 98, 0.09);
+    }
+
+    .source-note {
+      margin-top: 17px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(198, 40, 40, 0.13);
+      color: var(--danger);
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      overflow-wrap: anywhere;
+    }
+
+    .ai-panel {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.5fr);
+      align-items: center;
+      gap: clamp(26px, 3.6vw, 54px);
+      margin-top: 22px;
+      padding: clamp(26px, 3.3vw, 40px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 32px;
+      color: #F4FAF4;
+      background:
+        radial-gradient(640px 260px at 96% -15%, rgba(136, 200, 141, 0.27), transparent 67%),
+        radial-gradient(480px 280px at 0% 112%, rgba(61, 146, 74, 0.26), transparent 70%),
+        linear-gradient(118deg, #0D281B 0%, #163F2A 50%, #285C35 100%);
+      box-shadow: 0 30px 70px -42px rgba(14, 42, 29, 0.8);
+    }
+
+    .ai-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .ai-copy .panel-kicker {
+      color: #A9D8AB;
+    }
+
+    .ai-copy .panel-kicker::before {
+      background: #A9D8AB;
+    }
+
+    .ai-copy h2 {
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 2.5vw, 2.3rem);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .ai-desc {
+      max-width: 48ch;
+      margin-top: 13px;
+      color: rgba(235, 247, 236, 0.7);
+      font-size: 0.88rem;
+      line-height: 1.78;
+      overflow-wrap: anywhere;
+    }
+
+    .ai-motto {
+      margin-top: 23px;
+      padding-left: 13px;
+      border-left: 2px solid rgba(169, 216, 171, 0.5);
+      color: #B7DCB9;
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.7;
+      letter-spacing: 0.035em;
+    }
+
+    .ai-console {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .ai-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .ai-input {
+      width: 100%;
+      min-width: 0;
+      flex: 1;
+      padding: 15px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      color: #183120;
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow:
+        inset 0 2px 5px rgba(14, 42, 29, 0.08),
+        0 10px 24px -24px rgba(0, 0, 0, 0.7);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      outline: none;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .ai-input::placeholder {
+      color: #839187;
+    }
+
+    .ai-input:focus-visible {
+      border-color: rgba(169, 216, 171, 0.9);
+      box-shadow:
+        inset 0 2px 5px rgba(14, 42, 29, 0.08),
+        0 0 0 4px rgba(169, 216, 171, 0.16);
+    }
+
+    .ai-submit {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 0 0 auto;
+      padding: 15px 20px;
+      border: 0;
+      border-radius: 16px;
+      color: #123A23;
+      background: linear-gradient(145deg, #F3FFF2, var(--mint-strong));
+      box-shadow:
+        0 16px 26px -20px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 850;
+      line-height: 1.4;
+      white-space: nowrap;
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background-color 0.22s ease;
+    }
+
+    .ai-submit:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 20px 32px -20px rgba(0, 0, 0, 0.72),
+        inset 0 1px 0 #FFFFFF;
+    }
+
+    .ai-submit:active {
+      transform: translateY(0);
+    }
+
+    .ai-submit:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.32);
+      outline-offset: 3px;
+    }
+
+    .ai-submit-icon {
+      font-size: 0.92rem;
+      line-height: 1;
+    }
+
+    .ai-result {
+      display: flex;
+      flex-direction: column;
+      min-height: 181px;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.16);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .ai-result-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #BAD9BB;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: #A8E6A1;
+      box-shadow: 0 0 0 4px rgba(168, 230, 161, 0.1);
+      animation: signalPulse 2.4s ease-in-out infinite;
+    }
+
+    .result-badge {
+      max-width: 54%;
+      margin-left: auto;
+      padding: 4px 8px;
+      border: 1px solid rgba(232, 245, 233, 0.1);
+      border-radius: 999px;
+      color: rgba(222, 240, 224, 0.74);
+      background: rgba(232, 245, 233, 0.07);
+      font-size: 0.56rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.035em;
+      text-align: right;
+      text-transform: none;
+    }
+
+    .ai-answer {
+      flex: 1;
+      margin-top: 12px;
+      color: #E6F1E7;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .ai-answer.is-idle {
+      color: rgba(230, 241, 231, 0.53);
+      font-style: italic;
+    }
+
+    .ai-answer.is-typing::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 0.92em;
+      margin-left: 3px;
+      vertical-align: -0.08em;
+      background: #B8E9B9;
+      animation: caretBlink 0.8s steps(1) infinite;
+    }
+
+    .ai-warning {
+      margin-top: 13px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FF8B80;
+      font-size: 1.08rem;
+      font-weight: 850;
+      line-height: 1.55;
+      letter-spacing: 0.005em;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
+      background: rgba(7, 25, 17, 0.68);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.26s ease,
+        visibility 0.26s ease;
+    }
+
+    .modal-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      display: flex;
+      flex-direction: column;
+      width: min(760px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 32px;
+      background: #FFFFFF;
+      box-shadow: 0 42px 100px -40px rgba(0, 0, 0, 0.72);
+      transform: translateY(18px) scale(0.985);
+      transition:
+        transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.24s ease;
+      opacity: 0;
+    }
+
+    .modal-overlay.is-open .modal-card {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px 0 22px;
+    }
+
+    .modal-country {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      padding: 7px 12px;
+      border: 1px solid rgba(46, 125, 50, 0.1);
+      border-radius: 999px;
+      color: var(--forest);
+      background: var(--mint);
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-country::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      flex: 0 0 6px;
+      border-radius: 50%;
+      background: var(--forest);
+    }
+
+    .modal-close {
+      appearance: none;
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      padding: 0;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 50%;
+      color: var(--forest-deep);
+      background: #F5FAF4;
+      font-family: var(--font-sans);
+      font-size: 1.65rem;
+      font-weight: 400;
+      line-height: 1;
+      transition:
+        color 0.22s ease,
+        background-color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .modal-close:hover {
+      color: #FFFFFF;
+      background: var(--forest);
+      transform: rotate(90deg);
+    }
+
+    .modal-close:focus-visible {
+      outline: 3px solid rgba(46, 125, 50, 0.35);
+      outline-offset: 3px;
+    }
+
+    .modal-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 18px 0;
+      padding: 11px;
+      overflow: hidden;
+      border-radius: 24px;
+      color: #FFFFFF;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.24),
+        0 18px 34px -30px rgba(20, 59, 37, 0.8);
+    }
+
+    .modal-photo-frame {
+      height: clamp(214px, 34vw, 330px);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-photo,
+    .modal-photo-fallback {
+      grid-area: 1 / 1;
+      min-width: 0;
+    }
+
+    .modal-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-photo-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .modal-fallback-note {
+      max-width: 34ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-visual-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 0 5px 2px;
+    }
+
+    .modal-sci {
+      max-width: 100%;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.64rem;
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: 0.18em;
+      text-align: left;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-credit {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.56rem;
+      font-weight: 600;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-emoji {
+      font-size: 96px;
+      line-height: 1;
+      filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.28));
+      animation: emojiFloat 5.5s ease-in-out infinite;
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 21px 26px 30px;
+    }
+
+    .modal-kicker {
+      color: var(--forest-soft);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      color: var(--forest-deep);
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-short {
+      color: var(--forest);
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-detail {
+      margin-top: 5px;
+      color: #4D6053;
+      font-size: 0.94rem;
+      line-height: 1.88;
+      overflow-wrap: anywhere;
+    }
+
+    @keyframes signalPulse {
+      0%,
+      100% {
+        opacity: 0.65;
+        transform: scale(0.92);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes caretBlink {
+      0%,
+      50% {
+        opacity: 1;
+      }
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes emojiFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+        padding-top: 21px;
+        padding-left: 0;
+        border-top: 1px solid rgba(46, 125, 50, 0.14);
+        border-left: 0;
+      }
+
+      .stat + .stat {
+        margin-top: 0;
+        padding-top: 0;
+        padding-left: 16px;
+        border-top: 0;
+        border-left: 1px solid rgba(46, 125, 50, 0.11);
+      }
+
+      .workspace {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .ai-panel {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .ai-desc {
+        max-width: 68ch;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .page-shell {
+        padding: 18px 16px 30px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-bottom: 18px;
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+        border-radius: 15px;
+        font-size: 22px;
+      }
+
+      .brand-name {
+        font-size: 1.36rem;
+      }
+
+      .brand-sub {
+        font-size: 0.65rem;
+      }
+
+      .lang-switch {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .lang-btn {
+        flex: 1 1 0;
+        padding: 9px 7px;
+        font-size: 0.72rem;
+      }
+
+      .hero {
+        padding: 25px 22px;
+        border-radius: 27px;
+      }
+
+      .hero h1 {
+        margin-top: 16px;
+        font-size: clamp(1.95rem, 8.8vw, 2.75rem);
+        line-height: 1.14;
+      }
+
+      .hero-desc {
+        margin-top: 14px;
+        font-size: 0.88rem;
+        line-height: 1.72;
+      }
+
+      .hero-stats {
+        gap: 8px;
+      }
+
+      .stat strong {
+        font-size: 1.65rem;
+      }
+
+      .stat-label {
+        font-size: 0.63rem;
+      }
+
+      .stat + .stat {
+        padding-left: 10px;
+      }
+
+      .workspace {
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .panel {
+        padding: 19px;
+        border-radius: 25px;
+      }
+
+      .panel-head {
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .panel-desc {
+        font-size: 0.8rem;
+      }
+
+      .count-badge {
+        padding: 6px 9px;
+        font-size: 0.63rem;
+      }
+
+      .river-map-card {
+        margin-top: 16px;
+        padding: 12px 16px;
+        border-radius: 26px;
+      }
+
+      .river-map-card h2 {
+        font-size: 1.04rem;
+      }
+
+      .river-map-flow {
+        display: none;
+      }
+
+      .river-stage {
+        grid-template-rows: 32px 92px 32px;
+      }
+
+      .river-stage-label {
+        display: none;
+      }
+
+      .species-grid {
+        margin-top: 13px;
+      }
+
+      .species-card {
+        grid-template-columns: 104px minmax(0, 1fr);
+        gap: 13px;
+        min-height: 164px;
+        padding: 10px;
+        border-radius: 21px;
+      }
+
+      .species-visual {
+        min-height: 140px;
+        padding: 6px;
+        border-radius: 16px;
+      }
+
+      .species-photo-frame {
+        min-height: 102px;
+      }
+
+      .species-emoji {
+        font-size: 3.2rem;
+      }
+
+      .species-copy {
+        padding: 8px 4px 7px 0;
+      }
+
+      .species-name {
+        font-size: 1.15rem;
+      }
+
+      .species-short {
+        font-size: 0.77rem;
+      }
+
+      .health-card {
+        padding: 18px;
+      }
+
+      .health-lead,
+      .tip {
+        font-size: 0.78rem;
+      }
+
+      .source-note {
+        font-size: 0.7rem;
+      }
+
+      .ai-panel {
+        gap: 22px;
+        margin-top: 16px;
+        padding: 24px 20px;
+        border-radius: 25px;
+      }
+
+      .ai-copy h2 {
+        font-size: 1.72rem;
+      }
+
+      .ai-motto {
+        margin-top: 17px;
+      }
+
+      .ai-form {
+        flex-direction: column;
+      }
+
+      .ai-submit {
+        width: 100%;
+        padding: 14px 16px;
+      }
+
+      .ai-result {
+        min-height: 188px;
+        padding: 16px;
+      }
+
+      .ai-result-head {
+        flex-wrap: wrap;
+      }
+
+      .result-badge {
+        max-width: 100%;
+        margin-left: 15px;
+        text-align: left;
+      }
+
+      .ai-answer {
+        font-size: 0.88rem;
+      }
+
+      .ai-warning {
+        font-size: 1rem;
+      }
+
+      .modal-overlay {
+        align-items: flex-start;
+        padding: 12px;
+      }
+
+      .modal-card {
+        max-height: 94vh;
+        border-radius: 26px;
+      }
+
+      .modal-topbar {
+        padding: 13px 14px 0 17px;
+      }
+
+      .modal-country {
+        font-size: 0.64rem;
+      }
+
+      .modal-visual {
+        gap: 8px;
+        margin: 12px 13px 0;
+        padding: 8px;
+        border-radius: 20px;
+      }
+
+      .modal-photo-frame {
+        height: clamp(190px, 52vw, 252px);
+        border-radius: 14px;
+      }
+
+      .modal-emoji {
+        font-size: 82px;
+      }
+
+      .modal-visual-meta {
+        padding: 0 4px 2px;
+      }
+
+      .modal-body {
+        padding: 18px 20px 24px;
+      }
+
+      .modal-detail {
+        font-size: 0.9rem;
+        line-height: 1.82;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .lang-btn {
+        min-width: 0;
+        white-space: normal;
+        line-height: 1.25;
+      }
+
+      .river-map-head-right {
+        display: none;
+      }
+
+      .river-node-name {
+        font-size: 0.46rem;
+      }
+
+      .species-card {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 11px;
+      }
+
+      .species-visual {
+        min-height: 138px;
+        padding: 5px;
+      }
+
+      .species-photo-frame {
+        min-height: 96px;
+      }
+
+      .species-emoji {
+        font-size: 2.75rem;
+      }
+
+      .species-fallback-note {
+        font-size: 0.46rem;
+      }
+
+      .species-sci {
+        font-size: 0.46rem;
+      }
+
+      .detail-cue {
+        font-size: 0.7rem;
+      }
+
+      .health-watermark {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">🌿</span>
+        <span class="brand-copy">
+          <span class="brand-name" data-i18n="ui.brandName">澜湄同源</span>
+          <span class="brand-sub" data-i18n="ui.brandSub">跨境生态与健康智脑</span>
+        </span>
+      </div>
+      <nav class="lang-switch" id="langSwitch" data-i18n-aria="ui.langSwitcherLabel" aria-label="语言切换">
+        <button class="lang-btn is-active" type="button" data-lang="zh" lang="zh-CN" aria-pressed="true">中文</button>
+        <button class="lang-btn" type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+        <button class="lang-btn" type="button" data-lang="th" lang="th" aria-pressed="false">ไทย</button>
+        <button class="lang-btn" type="button" data-lang="vi" lang="vi" aria-pressed="false">Tiếng Việt</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="ui.eyebrow">澜沧江—湄公河 · 生态 × 健康</p>
+          <h1 id="heroTitle" data-i18n="ui.heroTitle">一江水，六种生命，共同守护。</h1>
+          <p class="hero-desc" data-i18n="ui.heroDesc">从中国到越南，沿澜沧江—湄公河认识跨境物种，理解公共健康风险，让科学成为流域共同的语言。</p>
+        </div>
+        <div class="hero-stats" data-i18n-aria="ui.statsAria" aria-label="平台数据概览">
+          <div class="stat">
+            <strong>06</strong>
+            <span class="stat-label" data-i18n="ui.statSpecies">物种档案</span>
+          </div>
+          <div class="stat">
+            <strong>05</strong>
+            <span class="stat-label" data-i18n="ui.statCountries">流域节点</span>
+          </div>
+          <div class="stat">
+            <strong>02</strong>
+            <span class="stat-label" data-i18n="ui.statTopics">公卫主题</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="river-map-card" aria-labelledby="riverMapTitle">
+        <div class="river-map-head">
+          <div class="river-map-title-group">
+            <p class="river-map-kicker" data-i18n="ui.mapKicker">流域分布</p>
+            <h2 id="riverMapTitle" data-i18n="ui.mapTitle">湄公河流域分布图</h2>
+          </div>
+          <div class="river-map-head-right">
+            <span class="river-map-flow" data-i18n="ui.mapFlow">自北向南 · 一江相连</span>
+            <span class="river-map-hint" data-i18n="ui.mapHint">点击流域节点，切换下方物种</span>
+          </div>
+        </div>
+        <div class="river-stage" id="riverStage" role="group" data-i18n-aria="ui.mapTitle" aria-label="湄公河流域分布图"></div>
+      </section>
+
+      <div class="workspace">
+        <section class="panel atlas-panel" aria-labelledby="atlasTitle">
+          <header class="panel-head">
+            <div>
+              <p class="panel-kicker" data-i18n="ui.atlasKicker">生物多样性图鉴</p>
+              <h2 id="atlasTitle" data-i18n="ui.atlasTitle">跨境物种图鉴</h2>
+              <p class="panel-desc" data-i18n="ui.atlasDesc">点击上方流域节点或物种卡片，查看真实影像与档案。</p>
+            </div>
+            <span class="count-badge" id="countBadge">中国 · 2 个物种</span>
+          </header>
+
+          <div class="species-grid" id="speciesGrid"></div>
+        </section>
+
+        <aside class="panel health-panel" aria-labelledby="healthTitle">
+          <header class="panel-head">
+            <div>
+              <p class="panel-kicker" data-i18n="ui.healthKicker">公共健康指南</p>
+              <h2 id="healthTitle" data-i18n="ui.healthTitle">跨境公卫指南</h2>
+              <p class="panel-desc" data-i18n="ui.healthDesc">沿河而行的风险提示与日常防护。</p>
+            </div>
+          </header>
+
+          <div class="health-stack" id="healthStack"></div>
+          <p class="source-note" data-i18n="ui.sourceNote">⚠️ 数据来源：WHO，不构成医疗建议。</p>
+        </aside>
+      </div>
+
+      <section class="ai-panel" aria-labelledby="aiTitle">
+        <div class="ai-copy">
+          <p class="panel-kicker" data-i18n="ui.aiKicker">科学核验台</p>
+          <h2 id="aiTitle" data-i18n="ui.aiTitle">AI 科学核验助手</h2>
+          <p class="ai-desc" data-i18n="ui.aiDesc">输入健康说法或生态疑问，获取基于公开资料的核验提示。答案以证据为先，而不是以声音大小为准。</p>
+          <p class="ai-motto" data-i18n="ui.aiMotto">证据先于结论 · 来源先于转述</p>
+        </div>
+
+        <div class="ai-console">
+          <form class="ai-form" id="verifyForm">
+            <input
+              class="ai-input"
+              id="verifyInput"
+              type="text"
+              autocomplete="off"
+              maxlength="220"
+              data-i18n-aria="ui.aiInputLabel"
+              data-i18n-placeholder="ui.inputPlaceholder"
+              aria-label="输入需要核验的内容"
+              placeholder="例如：登革热会通过空气传播吗？醋能预防登革热吗？"
+            >
+            <button class="ai-submit" type="submit">
+              <span class="ai-submit-icon" aria-hidden="true">✦</span>
+              <span data-i18n="ui.verifyBtn">一键科学核验</span>
+            </button>
+          </form>
+
+          <div class="ai-result" aria-live="polite">
+            <div class="ai-result-head">
+              <span class="signal-dot" aria-hidden="true"></span>
+              <span data-i18n="ui.resultLabel">核验结果</span>
+              <span class="result-badge" data-i18n="ui.resultBadge">基于公开资料</span>
+            </div>
+            <p class="ai-answer is-idle" id="aiAnswer">等待核验… 输入一个说法，看看它是否站得住脚。</p>
+            <p class="ai-warning" id="aiWarning" hidden>⚠️ 本系统仅作科普，绝不构成专业医疗建议。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDetail">
+      <div class="modal-topbar">
+        <span class="modal-country" id="modalCountry">分布区域 · 中国</span>
+        <button class="modal-close" id="modalClose" type="button" data-i18n-aria="ui.modalClose" aria-label="关闭详情">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-visual theme-elephant" id="modalVisual">
+        <div class="photo-frame modal-photo-frame" id="modalPhotoFrame">
+          <div class="modal-photo-fallback" id="modalPhotoFallback" aria-hidden="true">
+            <span class="modal-emoji" id="modalEmoji">🐘</span>
+            <span class="modal-fallback-note" id="modalFallbackNote" data-i18n="ui.imageFallback">图片加载失败 · 已切换为大号示意图</span>
+          </div>
+          <img class="modal-photo" id="modalImage" alt="" decoding="async" data-src="" onerror="handleSpeciesImageError(this)">
+        </div>
+        <div class="modal-visual-meta">
+          <span class="modal-sci" id="modalSci">Elephas maximus</span>
+          <span class="modal-credit" id="modalCredit">图片来源：Wikimedia Commons</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="modal-kicker" data-i18n="ui.modalKicker">物种详情档案</p>
+        <h2 class="modal-title" id="modalTitle">亚洲象</h2>
+        <p class="modal-short" id="modalShort">雨林巨兽 · 中国国家一级保护动物</p>
+        <p class="modal-detail" id="modalDetail"></p>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const i18n = {
+      zh: {
+        meta: {
+          htmlLang: 'zh-CN',
+          title: '澜湄同源·跨境生态与健康智脑'
+        },
+        ui: {
+          langSwitcherLabel: '语言切换',
+          brandName: '澜湄同源',
+          brandSub: '跨境生态与健康智脑',
+          eyebrow: '澜沧江—湄公河 · 生态 × 健康',
+          heroTitle: '一江水，六种生命，\n共同守护。',
+          heroDesc: '从中国到越南，沿澜沧江—湄公河认识跨境物种，理解公共健康风险，让科学成为流域共同的语言。',
+          statsAria: '平台数据概览',
+          statSpecies: '物种档案',
+          statCountries: '流域节点',
+          statTopics: '公卫主题',
+          atlasKicker: '生物多样性图鉴',
+          atlasTitle: '跨境物种图鉴',
+          atlasDesc: '点击上方流域节点或物种卡片，查看真实影像与档案。',
+          countryRailLabel: '选择国家节点',
+          speciesCount: '{n} 个物种',
+          speciesLabel: '物种档案',
+          viewDetail: '查看详情',
+          healthKicker: '公共健康指南',
+          healthTitle: '跨境公卫指南',
+          healthDesc: '沿河而行的风险提示与日常防护。',
+          sourceNote: '⚠️ 数据来源：WHO，不构成医疗建议。',
+          aiKicker: '科学核验台',
+          aiTitle: 'AI 科学核验助手',
+          aiDesc: '输入健康说法或生态疑问，获取基于公开资料的核验提示。答案以证据为先，而不是以声音大小为准。',
+          aiMotto: '证据先于结论 · 来源先于转述',
+          aiInputLabel: '输入需要核验的内容',
+          inputPlaceholder: '例如：登革热会通过空气传播吗？醋能预防登革热吗？',
+          verifyBtn: '一键科学核验',
+          resultLabel: '核验结果',
+          resultBadge: '基于公开资料',
+          aiIdle: '等待核验… 输入一个说法，看看它是否站得住脚。',
+          aiWarning: '⚠️ 本系统仅作科普，绝不构成专业医疗建议。',
+          result1: '核验结论：登革热主要由埃及伊蚊和白纹伊蚊叮咬传播，不会通过日常接触或空气人传人。醋不能杀灭登革病毒，也不能替代驱蚊、清除积水和及时就医。出现高热、皮疹或出血倾向时，请立即前往正规医疗机构。',
+          result2: '核验结论：该说法尚未匹配本地权威知识库中的明确条目。请优先核对世界卫生组织、国家疾控部门与同行评议文献；涉及诊断、用药或跨境旅行健康决策时，请咨询专业人员。',
+          modalKicker: '物种详情档案',
+          modalClose: '关闭详情',
+          distribution: '分布区域',
+          mapKicker: '流域分布',
+          mapTitle: '湄公河流域分布图',
+          mapFlow: '自北向南 · 一江相连',
+          mapRiver: '澜沧江—湄公河',
+          mapHint: '点击流域节点，切换下方物种',
+          imageFailed: '图片加载失败',
+          imageFallback: '图片加载失败 · 已切换为大号示意图',
+          photoAlt: '{name}（{scientific}）真实照片',
+          photoCredit: '图片来源：{credit}'
+        },
+        countries: {
+          cn: '中国',
+          mm: '缅甸',
+          la: '老挝',
+          th: '泰国',
+          vn: '越南'
+        },
+        mapRegions: {
+          cn: { name: '中国云南', sub: '澜沧江源头' },
+          mm: { name: '缅甸', sub: '流域西侧山地' },
+          la: { name: '老挝', sub: '湄公河中游' },
+          th: { name: '泰国', sub: '下游支流水网' },
+          vn: { name: '越南', sub: '三角洲与入海口' }
+        },
+        species: {
+          elephant: {
+            name: '亚洲象',
+            short: '雨林巨兽 · 中国国家一级保护动物',
+            detail: '亚洲象是亚洲现存最大的陆生动物，肩高可达2.5米，成年个体每日进食植物可逾150公斤。中国境内主要分布于云南西双版纳、普洱与临沧的热带雨林和季雨林。象群多由年长雌象带领，具有复杂的社会记忆与迁徙路径。栖息地破碎化、人象冲突和盗猎，是跨境保护面临的主要挑战。'
+          },
+          peafowl: {
+            name: '绿孔雀',
+            short: '雨林宝石 · 中国国家一级保护动物',
+            detail: '绿孔雀是中国唯一的本土孔雀，雄性尾屏可达两米，金属翠绿色羽色在晨光中尤为醒目。它们依赖保存完好的热带河谷季雨林，在云南元江、澜沧江流域的沙洲求偶、觅食。国内野生种群稀少，被列为国家一级保护动物。水电站建设、农药使用与栖息地分割，正挤压它们敏感的生存空间。'
+          },
+          mosquito: {
+            name: '白纹伊蚊',
+            short: '登革热媒介 · 城市边缘的微型猎手',
+            detail: '白纹伊蚊因腿部和胸背的银白条纹得名，是登革热、寨卡病毒病和基孔肯雅热的潜在传播媒介。雌蚊在白天活动，尤其清晨与傍晚最为活跃，偏爱在花盆托盘、废弃轮胎等小型清水容器中产卵。泰国湿热气候延长其繁殖季，社区清除积水与个人防蚊，是最有效的源头防控。'
+          },
+          monkey: {
+            name: '缅甸金丝猴',
+            short: '2010年才被科学描述的高山隐士',
+            detail: '缅甸金丝猴于2010年才被科学界正式描述，面部朝天、鼻梁裸露，雨雾中常发出独特的喷嚏声。它们生活在缅甸克钦邦高海拔山地森林，以嫩叶、竹笋和果实为食，种群数量稀少且分布狭窄。跨境森林连续性与当地社区的共管保护，对这一新发现灵长类的存续至关重要。'
+          },
+          tiger: {
+            name: '印度支那虎',
+            short: '东南亚丛林中的顶级捕食者',
+            detail: '印度支那虎是分布在东南亚大陆的虎亚种，雄虎体重可达180公斤，独居且需要广阔的连续林地。老挝北部的南埃—普卢国家保护区曾记录到幼虎活动，说明当地仍存在繁殖种群。盗猎、猎物减少与道路切割，使它们成为极度濒危的旗舰物种。跨境反盗猎协作与红外相机监测，是恢复种群的关键。'
+          },
+          tree: {
+            name: '望天树',
+            short: '可长至70米的雨林巨人',
+            detail: '望天树是龙脑香科的巨型常绿乔木，成熟个体可高达70米，笔直树干穿越林冠，被誉为雨林“旗舰树”。在中国云南与越南北部的热带沟谷雨林中，它依赖湿润谷地和大型动物传播种子。花期短暂，天然更新缓慢，对森林完整性极为敏感。跨境保护区网络与人工育苗，正帮助这一珍稀树种延续。'
+          }
+        },
+        health: {
+          dengue: {
+            tag: '伊蚊传播',
+            title: '登革热防护',
+            lead: '白纹伊蚊白天叮咬，清积水比临时驱蚊更根本。',
+            tips: [
+              '清空花盆、轮胎与容器积水，阻断伊蚊繁殖。',
+              '户外穿浅色长袖，裸露皮肤使用含避蚊胺的驱蚊剂。',
+              '出现高热、皮疹或出血倾向时及时就医，勿自行用药。'
+            ]
+          },
+          malaria: {
+            tag: '按蚊传播',
+            title: '疟疾防护',
+            lead: '按蚊多在黄昏至清晨活动，蚊帐与旅前咨询同样重要。',
+            tips: [
+              '疟疾经按蚊叮咬传播，黄昏至清晨的暴露风险更高。',
+              '使用经杀虫剂处理的蚊帐，室内可配合喷洒或蚊香。',
+              '前往林区或边境地区前咨询旅行门诊，必要时预防用药。'
+            ]
+          }
+        }
+      },
+      en: {
+        meta: {
+          htmlLang: 'en',
+          title: 'One Mekong · Cross-border Ecology & Health Intelligence'
+        },
+        ui: {
+          langSwitcherLabel: 'Change language',
+          brandName: 'One Mekong',
+          brandSub: 'Cross-border Ecology & Health Intelligence',
+          eyebrow: 'LANCANG–MEKONG · ECOLOGY × HEALTH',
+          heroTitle: 'One river. Six lives.\nOne shared future.',
+          heroDesc: 'From China to Vietnam, discover species that cross borders and understand public-health risks along the Mekong—so science can become a shared language.',
+          statsAria: 'Platform overview',
+          statSpecies: 'Species files',
+          statCountries: 'Basin nodes',
+          statTopics: 'Health topics',
+          atlasKicker: 'Biodiversity Atlas',
+          atlasTitle: 'Cross-border Species Atlas',
+          atlasDesc: 'Tap a river node or species card to view real photographs and dossiers.',
+          countryRailLabel: 'Choose a country',
+          speciesCount: '{n} species',
+          speciesLabel: 'Species file',
+          viewDetail: 'View details',
+          healthKicker: 'Public Health Guide',
+          healthTitle: 'Cross-border Health Guide',
+          healthDesc: 'Risk notes and everyday protection for life along the river.',
+          sourceNote: '⚠️ Source: WHO. This is not medical advice.',
+          aiKicker: 'AI Verification Desk',
+          aiTitle: 'AI Science Verification',
+          aiDesc: 'Enter a health claim or ecological question to receive a verification note based on public sources. Evidence matters more than volume.',
+          aiMotto: 'Evidence before conclusions · Sources before shares',
+          aiInputLabel: 'Content to verify',
+          inputPlaceholder: 'e.g. Is dengue airborne? Can vinegar prevent dengue?',
+          verifyBtn: 'Verify scientifically',
+          resultLabel: 'Verification result',
+          resultBadge: 'Public sources',
+          aiIdle: 'Ready to verify… Enter a claim to see whether it holds up.',
+          aiWarning: '⚠️ This system is for science communication only and never constitutes professional medical advice.',
+          result1: 'Verification: Dengue is transmitted mainly by the bites of Aedes aegypti and Aedes albopictus, not by routine contact or airborne spread between people. Vinegar cannot kill dengue virus or replace mosquito repellent, removing standing water and timely medical care. Seek care at a proper medical facility for high fever, rash or bleeding.',
+          result2: 'Verification: This claim does not yet match a clear entry in the local authoritative knowledge base. Check the World Health Organization, national disease-control agencies and peer-reviewed literature first; consult a professional for diagnosis, medication or cross-border travel health decisions.',
+          modalKicker: 'Species Dossier',
+          modalClose: 'Close details',
+          distribution: 'Range',
+          mapKicker: 'Basin map',
+          mapTitle: 'Mekong Basin Distribution Map',
+          mapFlow: 'North to south · one connected river',
+          mapRiver: 'Lancang–Mekong',
+          mapHint: 'Tap a river node to switch the species below',
+          imageFailed: 'Image failed to load',
+          imageFallback: 'Image failed to load · showing an illustrated card',
+          photoAlt: 'Photo of {name} ({scientific})',
+          photoCredit: 'Image: {credit}'
+        },
+        countries: {
+          cn: 'China',
+          mm: 'Myanmar',
+          la: 'Laos',
+          th: 'Thailand',
+          vn: 'Vietnam'
+        },
+        mapRegions: {
+          cn: { name: 'China (Yunnan)', sub: 'Source of the Lancang' },
+          mm: { name: 'Myanmar', sub: 'Western basin highlands' },
+          la: { name: 'Laos', sub: 'Middle Mekong' },
+          th: { name: 'Thailand', sub: 'Lower Mekong tributaries' },
+          vn: { name: 'Vietnam', sub: 'Delta and estuary' }
+        },
+        species: {
+          elephant: {
+            name: 'Asian Elephant',
+            short: 'Rainforest giant · first-class protected in China',
+            detail: 'The Asian elephant is Asia’s largest living land animal, standing up to 2.5 m at the shoulder and eating more than 150 kg of plants a day. In China it survives mainly in the rainforests of Xishuangbanna, Pu’er and Lincang in Yunnan. Herds are often led by older females with deep social memory and traditional migration routes. Habitat fragmentation, human–elephant conflict and poaching remain the main cross-border conservation challenges.'
+          },
+          peafowl: {
+            name: 'Green Peafowl',
+            short: 'Jewel of the riverine forest · first-class protected',
+            detail: 'The green peafowl is China’s only native peafowl; a male’s train can reach two metres and glows metallic emerald in morning light. It depends on intact tropical riverine forest, courting and foraging on sandbars in the Yuanjiang and Lancang river basins of Yunnan. Wild numbers in China are small and the bird is nationally first-class protected. Hydropower development, pesticide use and habitat fragmentation are squeezing its sensitive niche.'
+          },
+          mosquito: {
+            name: 'Asian Tiger Mosquito',
+            short: 'Dengue vector · a tiny hunter at the urban edge',
+            detail: 'Aedes albopictus, the Asian tiger mosquito, is named for the silver-white bands on its legs and thorax and is a potential vector of dengue, Zika and chikungunya. Females bite by day, especially around dawn and dusk, and prefer to lay eggs in small clean-water containers such as saucers and discarded tyres. Thailand’s hot, humid climate lengthens its breeding season, making community water clearance and personal protection the most effective source control.'
+          },
+          monkey: {
+            name: 'Myanmar Snub-nosed Monkey',
+            short: 'A high-mountain recluse only described in 2010',
+            detail: 'The Myanmar snub-nosed monkey was formally described by science only in 2010. Its upturned face and bare nose are distinctive, and it often makes a sneeze-like call in misty rain. It lives in high-elevation mountain forests of Kachin State, Myanmar, feeding on young leaves, bamboo shoots and fruit. Its small, narrow range makes cross-border forest continuity and community co-management essential to the survival of this newly discovered primate.'
+          },
+          tiger: {
+            name: 'Indochinese Tiger',
+            short: 'The apex predator of Southeast Asian forests',
+            detail: 'The Indochinese tiger is a subspecies of mainland Southeast Asia. Males may weigh up to 180 kg, live alone and require vast connected forest. In Laos’s Nam Et–Phou Louey National Protected Area, cameras have recorded cubs, showing that a breeding population persists. Poaching, prey depletion and road fragmentation have made it critically endangered. Cross-border anti-poaching cooperation and camera-trap monitoring are key to recovery.'
+          },
+          tree: {
+            name: 'Chinese Parashorea',
+            short: 'A rainforest giant that can reach 70 metres',
+            detail: 'Parashorea chinensis is a giant evergreen dipterocarp tree; mature individuals can stand 70 metres tall, their straight trunks piercing the canopy and earning the name “sky-gazing tree”. In tropical valley rainforests of Yunnan and northern Vietnam, it depends on moist valleys and large animals to disperse its seeds. Its flowering period is short, natural regeneration is slow and it is highly sensitive to forest integrity. Cross-border protected-area networks and nursery propagation are helping this rare tree endure.'
+          }
+        },
+        health: {
+          dengue: {
+            tag: 'Aedes-borne',
+            title: 'Dengue Prevention',
+            lead: 'Aedes mosquitoes bite by day—ending standing water is the root defence.',
+            tips: [
+              'Empty standing water from pots, tyres and containers to stop Aedes breeding.',
+              'Wear light-coloured long sleeves outdoors and apply DEET-based repellent to exposed skin.',
+              'Seek medical care promptly for high fever, rash or bleeding; do not self-medicate.'
+            ]
+          },
+          malaria: {
+            tag: 'Anopheles-borne',
+            title: 'Malaria Prevention',
+            lead: 'Anopheles bite from dusk to dawn; nets and pre-travel advice matter.',
+            tips: [
+              'Malaria spreads through Anopheles bites, with higher risk from dusk to dawn.',
+              'Sleep under insecticide-treated nets; use indoor spraying or coils where appropriate.',
+              'Consult a travel clinic before forest or border travel; preventive medicine only if advised.'
+            ]
+          }
+        }
+      },
+      th: {
+        meta: {
+          htmlLang: 'th',
+          title: 'หนึ่งสายน้ำโขง · ปัญญาระบบนิเวศและสุขภาพข้ามพรมแดน'
+        },
+        ui: {
+          langSwitcherLabel: 'เปลี่ยนภาษา',
+          brandName: 'หนึ่งสายน้ำโขง',
+          brandSub: 'ศูนย์ปัญญาระบบนิเวศและสุขภาพข้ามพรมแดน',
+          eyebrow: 'ล้านช้าง–โขง · ระบบนิเวศ × สุขภาพ',
+          heroTitle: 'หนึ่งสายน้ำ หกชีวิต\nหนึ่งอนาคตร่วมกัน',
+          heroDesc: 'จากจีนถึงเวียดนาม รู้จักสิ่งมีชีวิตข้ามพรมแดนและความเสี่ยงด้านสาธารณสุขตลอดลำน้ำโขง ให้วิทยาศาสตร์เป็นภาษาร่วมของทุกคน',
+          statsAria: 'ภาพรวมข้อมูลแพลตฟอร์ม',
+          statSpecies: 'ชนิดสิ่งมีชีวิต',
+          statCountries: 'จุดเชื่อมลุ่มน้ำ',
+          statTopics: 'หัวข้อสาธารณสุข',
+          atlasKicker: 'แผนที่ความหลากหลายทางชีวภาพ',
+          atlasTitle: 'คู่มือสิ่งมีชีวิตข้ามพรมแดน',
+          atlasDesc: 'แตะจุดบนแม่น้ำหรือการ์ดชนิด เพื่อชมภาพถ่ายจริงและแฟ้มข้อมูล',
+          countryRailLabel: 'เลือกประเทศ',
+          speciesCount: '{n} ชนิด',
+          speciesLabel: 'ข้อมูลชนิด',
+          viewDetail: 'ดูรายละเอียด',
+          healthKicker: 'คู่มือสาธารณสุข',
+          healthTitle: 'คู่มือสุขภาพข้ามพรมแดน',
+          healthDesc: 'คำเตือนความเสี่ยงและวิธีป้องกันในชีวิตประจำวันตามลำน้ำ',
+          sourceNote: '⚠️ แหล่งข้อมูล: WHO · ไม่ใช่คำแนะนำทางการแพทย์',
+          aiKicker: 'ศูนย์ตรวจสอบวิทยาศาสตร์',
+          aiTitle: 'ผู้ช่วยตรวจสอบวิทยาศาสตร์ AI',
+          aiDesc: 'พิมพ์ข้อกล่าวอ้างด้านสุขภาพหรือคำถามระบบนิเวศ เพื่อรับข้อชี้แนะจากการตรวจสอบข้อมูลสาธารณะ เราให้น้ำหนักกับหลักฐาน ไม่ใช่ความดังของเสียง',
+          aiMotto: 'หลักฐานก่อนข้อสรุป · แหล่งข้อมูลก่อนการแชร์',
+          aiInputLabel: 'ข้อความที่ต้องการตรวจสอบ',
+          inputPlaceholder: 'เช่น ไข้เลือดออกติดต่อทางอากาศหรือไม่? น้ำส้มสายชูป้องกันไข้เลือดออกได้ไหม?',
+          verifyBtn: 'ตรวจสอบวิทยาศาสตร์',
+          resultLabel: 'ผลการตรวจสอบ',
+          resultBadge: 'ข้อมูลสาธารณะ',
+          aiIdle: 'พร้อมตรวจสอบ… พิมพ์ข้อกล่าวอ้างเพื่อดูว่าข้อความนั้นน่าเชื่อถือเพียงใด',
+          aiWarning: '⚠️ ระบบนี้ให้ความรู้เท่านั้น และไม่ใช่คำแนะนำทางการแพทย์จากผู้เชี่ยวชาญโดยเด็ดขาด',
+          result1: 'ผลการตรวจสอบ: ไข้เลือดออกแพร่ผ่านการกัดของยุงลายบ้านและยุงลายสวน ไม่ได้ติดต่อผ่านการสัมผัสทั่วไปหรือทางอากาศ น้ำส้มสายชูไม่สามารถฆ่าเชื้อไวรัสไข้เลือดออก และแทนที่การใช้สารไล่ยุง การเทน้ำขัง หรือการพบแพทย์ได้ หากมีไข้สูง ผื่น หรือเลือดออกผิดปกติ ควรรีบไปสถานพยาบาลทันที',
+          result2: 'ผลการตรวจสอบ: ข้อกล่าวอ้างนี้ยังไม่พบรายการที่ชัดเจนในแหล่งความรู้หลักในพื้นที่ โปรดตรวจสอบกับ WHO หน่วยควบคุมโรคแห่งชาติ และงานวิจัยที่ผ่านการทบทวนโดยผู้เชี่ยวชาญก่อน สำหรับการวินิจฉัย การใช้ยา หรือการตัดสินใจด้านสุขภาพในการเดินทางข้ามพรมแดน ควรปรึกษาผู้เชี่ยวชาญ',
+          modalKicker: 'แฟ้มข้อมูลชนิด',
+          modalClose: 'ปิดรายละเอียด',
+          distribution: 'พื้นที่แพร่กระจาย',
+          mapKicker: 'แผนที่ลุ่มน้ำ',
+          mapTitle: 'แผนที่การกระจายลุ่มน้ำโขง',
+          mapFlow: 'จากเหนือสู่ใต้ · สายน้ำเดียวเชื่อมกัน',
+          mapRiver: 'ล้านช้าง–โขง',
+          mapHint: 'แตะจุดบนแม่น้ำเพื่อเปลี่ยนชนิดด้านล่าง',
+          imageFailed: 'โหลดภาพไม่สำเร็จ',
+          imageFallback: 'โหลดภาพไม่สำเร็จ · แสดงภาพประกอบทดแทน',
+          photoAlt: 'ภาพถ่ายของ{name} ({scientific})',
+          photoCredit: 'ภาพ: {credit}'
+        },
+        countries: {
+          cn: 'จีน',
+          mm: 'เมียนมา',
+          la: 'ลาว',
+          th: 'ไทย',
+          vn: 'เวียดนาม'
+        },
+        mapRegions: {
+          cn: { name: 'จีน (ยูนนาน)', sub: 'ต้นน้ำล้านช้าง' },
+          mm: { name: 'เมียนมา', sub: 'เทือกเขาฝั่งตะวันตก' },
+          la: { name: 'ลาว', sub: 'แม่น้ำโขงตอนกลาง' },
+          th: { name: 'ไทย', sub: 'เครือข่ายลำน้ำสาขาตอนล่าง' },
+          vn: { name: 'เวียดนาม', sub: 'ดินดอนสามเหลี่ยมและปากแม่น้ำ' }
+        },
+        species: {
+          elephant: {
+            name: 'ช้างเอเชีย',
+            short: 'สัตว์บกยักษ์แห่งป่าฝน · สัตว์ป่าคุ้มครองชั้น 1 ของจีน',
+            detail: 'ช้างเอเชียเป็นสัตว์บกขนาดใหญ่ที่สุดของทวีปเอเชีย สูงถึงไหล่ประมาณ 2.5 เมตร และกินพืชได้มากกว่า 150 กิโลกรัมต่อวัน ในจีนพบมากในป่าฝนเขตร้อนของสิบสองปันนา ผู่เอ่อร์ และหลินชาง มณฑลยูนนาน ฝูงมักนำโดยช้างเพศเมียที่มีประสบการณ์และจดจำเส้นทางอพยพได้ดี การแตกกระจายของถิ่นที่อยู่ ความขัดแย้งระหว่างคนกับช้าง และการล่าสัตว์ ยังเป็นความท้าทายหลักของการอนุรักษ์ข้ามพรมแดน'
+          },
+          peafowl: {
+            name: 'นกยูงเขียว',
+            short: 'อัญมณีแห่งป่าแม่น้ำ · สัตว์คุ้มครองชั้น 1 ของจีน',
+            detail: 'นกยูงเขียวเป็นนกยูงพื้นถิ่นเพียงชนิดเดียวของจีน หางของนกเพศผู้ยาวได้ถึงสองเมตรและเปล่งประกายสีมรกตในแสงเช้า มันอาศัยป่าแม่น้ำเขตร้อนที่สมบูรณ์ โดยแสดงสีสันและหาอาหารบนสันดอนในลุ่มน้ำหยวนเจียงและล้านช้างของยูนนาน ประชากรป่าในจีนมีจำนวนน้อยและได้รับการคุ้มครองระดับชาติ การสร้างเขื่อน ยาฆ่าแมลง และการแบ่งแยกถิ่นที่อยู่ กำลังบีบพื้นที่อยู่อาศัยที่ละเอียดอ่อนนี้'
+          },
+          mosquito: {
+            name: 'ยุงลายสวน',
+            short: 'พาหะไข้เลือดออก · นักล่าจิ๋วที่ชายขอบเมือง',
+            detail: 'ยุงลายสวนได้ชื่อจากแถบสีเงินขาวบนขาและอก และเป็นพาหะที่เป็นไปได้ของไข้เลือดออก ซิกา และชิคุนกุนยา ยุงตัวเมียออกหากินกลางวัน โดยเฉพาะช่วงเช้าและพลบค่ำ และชอบวางไข่ในภาชนะน้ำสะอาดขนาดเล็ก เช่น จานรองกระถางหรือยางรถยนต์ที่ทิ้งไว้ สภาพอากาศร้อนชื้นของไทยทำให้ฤดูเพาะพันธุ์ยาวนาน การช่วยกันกำจัดน้ำขังในชุมชนและการป้องกันตนเองจึงเป็นการควบคุมต้นตอที่มีประสิทธิภาพที่สุด'
+          },
+          monkey: {
+            name: 'ลิงจมูกแบนพม่า',
+            short: 'ผู้สันโดษบนภูเขาสูงที่เพิ่งถูกบรรยายในปี 2010',
+            detail: 'ลิงจมูกแบนพม่าได้รับการบรรยายทางวิทยาศาสตร์อย่างเป็นทางการเมื่อปี 2010 เท่านั้น ใบหน้าที่เงยขึ้นและจมูกโล้นเป็นเอกลักษณ์ และมักส่งเสียงคล้ายจามในสายหมอกฝน พวกมันอาศัยอยู่ในป่าภูเขาสูงของรัฐกะฉิ่น ประเทศเมียนมา กินใบอ่อน หน่อไม้ และผลไม้ ถิ่นที่อยู่แคบและประชากรน้อยทำให้ความต่อเนื่องของผืนป่าข้ามพรมแดนและการจัดการร่วมกับชุมชนมีความสำคัญอย่างยิ่งต่อลิงชนิดใหม่นี้'
+          },
+          tiger: {
+            name: 'เสือโคร่งอินโดจีน',
+            short: 'นักล่าอันดับสูงสุดแห่งป่าเอเชียตะวันออกเฉียงใต้',
+            detail: 'เสือโคร่งอินโดจีนเป็นชนิดย่อยในแผ่นดินใหญ่เอเชียตะวันออกเฉียงใต้ เสือตัวผู้หนักได้ถึง 180 กิโลกรัม อาศัยลำพังและต้องการผืนป่าต่อเนื่องขนาดใหญ่ ในเขตอนุรักษ์แห่งชาติ Nam Et–Phou Louey ทางภาคเหนือของลาว กล้องดักถ่ายบันทึกเสือลูกได้ แสดงว่ายังมีประชากรที่สืบพันธุ์อยู่ การล่า สัตว์เหยื่อลดลง และถนนตัดผ่านผืนป่า ทำให้ชนิดนี้ใกล้สูญพันธุ์อย่างยิ่ง ความร่วมมือต่อต้านการล่าข้ามพรมแดนและการติดตามด้วยกล้องจึงเป็นกุญแจสำคัญ'
+          },
+          tree: {
+            name: 'ต้นปาราโซเรีย',
+            short: 'ยักษ์แห่งป่าฝนที่สูงได้ถึง 70 เมตร',
+            detail: 'ต้นปาราโซเรียเป็นไม้ยืนต้นขนาดยักษ์ในวงศ์ยางนา ต้นที่สมบูรณ์อาจสูงถึง 70 เมตร ลำต้นตรงทะลุเรือนยอดจนได้ชื่อว่า "ต้นแหงนมองฟ้า" ในป่าดิบชื้นหุบเขาของยูนนานและภาคเหนือเวียดนาม มันพึ่งพาหุบเขาชื้นและสัตว์ขนาดใหญ่ในการกระจายเมล็ด ช่วงออกดอกสั้น การสืบพันธุ์ตามธรรมชาติช้า และอ่อนไหวต่อความสมบูรณ์ของป่า เครือข่ายเขตอนุรักษ์ข้ามพรมแดนและการเพาะกล้าไม้กำลังช่วยให้ไม้หายากชนิดนี้ดำรงอยู่'
+          }
+        },
+        health: {
+          dengue: {
+            tag: 'มียุงลายเป็นพาหะ',
+            title: 'การป้องกันไข้เลือดออก',
+            lead: 'ยุงลายกัดในเวลากลางวัน การกำจัดน้ำขังจึงสำคัญกว่าการไล่ยุงชั่วคราว',
+            tips: [
+              'เทน้ำในจานรองกระถาง ยางรถ และภาชนะต่าง ๆ เพื่อตัดวงจรการเพาะพันธุ์ของยุงลาย',
+              'สวมเสื้อแขนยาวสีอ่อนเมื่ออยู่กลางแจ้ง และทาสารไล่ยุงที่มี DEET บนผิวหนังที่เปิดเผย',
+              'หากมีไข้สูง ผื่น หรือเลือดออกผิดปกติ ควรรีบพบแพทย์และไม่ซื้อยากินเอง'
+            ]
+          },
+          malaria: {
+            tag: 'มียุงก้นปล่องเป็นพาหะ',
+            title: 'การป้องกันมาลาเรีย',
+            lead: 'ยุงก้นปล่องออกหากินช่วงพลบค่ำถึงเช้า มุ้งและคำแนะนำก่อนเดินทางจึงสำคัญ',
+            tips: [
+              'มาลาเรียแพร่ผ่านยุงก้นปล่อง โดยเสี่ยงสูงขึ้นตั้งแต่พลบค่ำถึงรุ่งเช้า',
+              'นอนในมุ้งชุบสารฆ่าแมลง และกำจัดยุงในบ้านตามความเหมาะสม',
+              'ปรึกษาคลินิกท่องเที่ยวก่อนเดินทางเข้าป่าหรือพื้นที่ชายแดน และใช้ยาป้องกันตามคำแนะนำ'
+            ]
+          }
+        }
+      },
+      vi: {
+        meta: {
+          htmlLang: 'vi',
+          title: 'Cùng Nguồn Mekong · Trí tuệ sinh thái & sức khỏe xuyên biên giới'
+        },
+        ui: {
+          langSwitcherLabel: 'Chuyển ngôn ngữ',
+          brandName: 'Cùng Nguồn Mekong',
+          brandSub: 'Trí tuệ sinh thái & sức khỏe xuyên biên giới',
+          eyebrow: 'Lan Thương – Mekong · Sinh thái × Sức khỏe',
+          heroTitle: 'Một dòng sông. Sáu sinh mệnh.\nMột tương lai chung.',
+          heroDesc: 'Từ Trung Quốc đến Việt Nam, khám phá các loài xuyên biên giới và hiểu rõ nguy cơ sức khỏe cộng đồng dọc dòng Mekong, để khoa học trở thành ngôn ngữ chung.',
+          statsAria: 'Tổng quan dữ liệu nền tảng',
+          statSpecies: 'Hồ sơ loài',
+          statCountries: 'Điểm kết nối',
+          statTopics: 'Chủ đề y tế',
+          atlasKicker: 'Tập san đa dạng sinh học',
+          atlasTitle: 'Cẩm nang loài xuyên biên giới',
+          atlasDesc: 'Chạm vào nút trên sông hoặc thẻ loài để xem ảnh thật và hồ sơ chi tiết.',
+          countryRailLabel: 'Chọn quốc gia',
+          speciesCount: '{n} loài',
+          speciesLabel: 'Hồ sơ loài',
+          viewDetail: 'Xem chi tiết',
+          healthKicker: 'Cẩm nang sức khỏe cộng đồng',
+          healthTitle: 'Hướng dẫn y tế xuyên biên giới',
+          healthDesc: 'Cảnh báo nguy cơ và cách phòng bệnh trong hành trình theo dòng sông.',
+          sourceNote: '⚠️ Nguồn dữ liệu: WHO · Không phải lời khuyên y khoa.',
+          aiKicker: 'Bàn kiểm chứng khoa học',
+          aiTitle: 'Trợ lý kiểm chứng khoa học AI',
+          aiDesc: 'Nhập một nhận định về sức khỏe hoặc câu hỏi sinh thái để nhận gợi ý kiểm chứng dựa trên nguồn công khai. Bằng chứng quan trọng hơn âm lượng.',
+          aiMotto: 'Bằng chứng trước kết luận · Nguồn trước khi chia sẻ',
+          aiInputLabel: 'Nội dung cần kiểm chứng',
+          inputPlaceholder: 'Ví dụ: Sốt xuất huyết có lây qua không khí? Giấm có phòng được sốt xuất huyết?',
+          verifyBtn: 'Kiểm chứng khoa học',
+          resultLabel: 'Kết quả kiểm chứng',
+          resultBadge: 'Dựa trên nguồn công khai',
+          aiIdle: 'Sẵn sàng kiểm chứng… Nhập một nhận định để xem nó có đứng vững không.',
+          aiWarning: '⚠️ Hệ thống này chỉ nhằm phổ biến kiến thức, tuyệt đối không thay thế lời khuyên y khoa chuyên nghiệp.',
+          result1: 'Kết luận kiểm chứng: Sốt xuất huyết chủ yếu lây qua vết đốt của muỗi Aedes aegypti và Aedes albopictus, không lây qua tiếp xúc thông thường hay không khí. Giấm không thể diệt virus sốt xuất huyết, cũng không thay thế thuốc chống muỗi, việc dọn nước đọng và đi khám kịp thời. Khi sốt cao, phát ban hoặc có dấu hiệu chảy máu, hãy đến ngay cơ sở y tế.',
+          result2: 'Kết luận kiểm chứng: Nhận định này chưa khớp với một mục rõ ràng trong nguồn tri thức chuyên môn tại địa phương. Hãy ưu tiên đối chiếu với Tổ chức Y tế Thế giới, cơ quan kiểm soát bệnh tật quốc gia và các tài liệu bình duyệt; khi liên quan đến chẩn đoán, dùng thuốc hoặc quyết định sức khỏe khi đi xuyên biên giới, hãy hỏi chuyên gia.',
+          modalKicker: 'Hồ sơ loài',
+          modalClose: 'Đóng chi tiết',
+          distribution: 'Phân bố',
+          mapKicker: 'Bản đồ lưu vực',
+          mapTitle: 'Bản đồ lưu vực Mekong',
+          mapFlow: 'Từ bắc xuống nam · một dòng sông chung',
+          mapRiver: 'Lan Thương – Mekong',
+          mapHint: 'Chạm vào nút trên sông để đổi loài bên dưới',
+          imageFailed: 'Không tải được ảnh',
+          imageFallback: 'Không tải được ảnh · đã chuyển sang hình minh họa',
+          photoAlt: 'Ảnh của {name} ({scientific})',
+          photoCredit: 'Ảnh: {credit}'
+        },
+        countries: {
+          cn: 'Trung Quốc',
+          mm: 'Myanmar',
+          la: 'Lào',
+          th: 'Thái Lan',
+          vn: 'Việt Nam'
+        },
+        mapRegions: {
+          cn: { name: 'Trung Quốc (Vân Nam)', sub: 'Nơi bắt nguồn sông Lan Thương' },
+          mm: { name: 'Myanmar', sub: 'Vùng núi phía tây lưu vực' },
+          la: { name: 'Lào', sub: 'Trung lưu Mekong' },
+          th: { name: 'Thái Lan', sub: 'Mạng lưới sông nhánh hạ lưu' },
+          vn: { name: 'Việt Nam', sub: 'Đồng bằng và cửa sông' }
+        },
+        species: {
+          elephant: {
+            name: 'Voi châu Á',
+            short: 'Gã khổng lồ rừng mưa · được bảo vệ cấp quốc gia',
+            detail: 'Voi châu Á là động vật trên cạn lớn nhất còn tồn tại ở châu Á, cao tới 2,5 m tính đến vai và ăn hơn 150 kg thực vật mỗi ngày. Tại Trung Quốc, loài này chủ yếu sống trong rừng mưa nhiệt đới ở Tây Song Bản Nạp, Phổ Nhĩ và Lâm Thương, Vân Nam. Đàn thường do voi cái lớn tuổi dẫn đầu, có trí nhớ xã hội phức tạp và các tuyến di cư truyền thống. Chia cắt sinh cảnh, xung đột voi–người và nạn săn trộm vẫn là thách thức bảo tồn xuyên biên giới chính.'
+          },
+          peafowl: {
+            name: 'Công xanh',
+            short: 'Bảo ngọc rừng ven sông · được bảo vệ cấp quốc gia',
+            detail: 'Công xanh là loài công bản địa duy nhất của Trung Quốc; đuôi của con trống có thể dài tới hai mét và óng ánh ngọc lục bảo trong ánh bình minh. Chúng phụ thuộc vào rừng nhiệt đới ven sông nguyên vẹn, khoe mẽ và kiếm ăn trên các bãi cát ở lưu vực Nguyên Giang và Lan Thương, Vân Nam. Quần thể hoang dã tại Trung Quốc rất nhỏ và được bảo vệ cấp quốc gia. Phát triển thủy điện, thuốc trừ sâu và chia cắt sinh cảnh đang thu hẹp vùng sống nhạy cảm của chúng.'
+          },
+          mosquito: {
+            name: 'Muỗi vằn châu Á',
+            short: 'Vật trung gian sốt xuất huyết · thợ săn tí hon ven đô',
+            detail: 'Muỗi vằn châu Á (Aedes albopictus) được đặt tên theo các vệt trắng bạc trên chân và ngực, là vật trung gian tiềm năng của sốt xuất huyết, Zika và chikungunya. Muỗi cái hoạt động ban ngày, mạnh nhất vào sáng sớm và chạng vạng, ưa đẻ trứng trong các vật chứa nước sạch nhỏ như đĩa lót chậu và lốp xe bỏ. Khí hậu nóng ẩm của Thái Lan kéo dài mùa sinh sản; cộng đồng dọn nước đọng và bảo vệ cá nhân là cách kiểm soát nguồn hiệu quả nhất.'
+          },
+          monkey: {
+            name: 'Khỉ mũi hếch Myanmar',
+            short: 'Ẩn sĩ núi cao chỉ được mô tả vào năm 2010',
+            detail: 'Khỉ mũi hếch Myanmar chỉ được khoa học mô tả chính thức vào năm 2010. Khuôn mặt hếch và phần mũi trần là đặc điểm riêng, chúng thường phát ra tiếng kêu như hắt hơi trong mưa sương. Loài này sống ở rừng núi cao bang Kachin, Myanmar, ăn lá non, măng và quả. Vùng phân bố hẹp và quần thể nhỏ khiến sự liên tục của rừng xuyên biên giới cùng đồng quản lý với cộng đồng địa phương trở nên thiết yếu cho loài linh trưởng mới được phát hiện này.'
+          },
+          tiger: {
+            name: 'Hổ Đông Dương',
+            short: 'Kẻ săn mồi đỉnh cao của rừng Đông Nam Á',
+            detail: 'Hổ Đông Dương là phân loài hổ ở lục địa Đông Nam Á. Hổ đực có thể nặng tới 180 kg, sống đơn độc và cần vùng rừng liên tục rộng lớn. Tại khu bảo tồn quốc gia Nam Et–Phou Louey ở bắc Lào, bẫy ảnh đã ghi nhận hổ con, cho thấy quần thể sinh sản vẫn tồn tại. Nạn săn trộm, suy giảm con mồi và đường sá chia cắt rừng khiến loài này cực kỳ nguy cấp. Hợp tác chống săn trộm xuyên biên giới và giám sát bằng bẫy ảnh là then chốt để phục hồi.'
+          },
+          tree: {
+            name: 'Cây Vọng Thiên',
+            short: 'Người khổng lồ rừng mưa cao tới 70 mét',
+            detail: 'Parashorea chinensis là loài cây gỗ lớn thường xanh thuộc họ Dầu; cá thể trưởng thành có thể cao 70 mét, thân thẳng vượt tán rừng nên được gọi là “cây vọng thiên”. Trong rừng mưa nhiệt đới ven thung lũng của Vân Nam và bắc Việt Nam, loài này phụ thuộc vào thung lũng ẩm và động vật lớn để phát tán hạt. Mùa hoa ngắn, tái sinh tự nhiên chậm và rất nhạy cảm với tính nguyên vẹn của rừng. Mạng lưới khu bảo tồn xuyên biên giới và ươm giống đang giúp loài cây quý này tiếp tục tồn tại.'
+          }
+        },
+        health: {
+          dengue: {
+            tag: 'Lây qua muỗi Aedes',
+            title: 'Phòng chống sốt xuất huyết',
+            lead: 'Muỗi Aedes đốt ban ngày—dọn nước đọng là phòng ngừa gốc rễ.',
+            tips: [
+              'Dọn sạch nước đọng trong chậu cây, lốp xe và vật chứa để cắt vòng sinh sản của muỗi Aedes.',
+              'Mặc áo dài tay màu sáng khi ra ngoài; thoa thuốc chống muỗi có DEET lên vùng da hở.',
+              'Sốt cao, phát ban hoặc chảy máu bất thường cần đi khám ngay; không tự ý dùng thuốc.'
+            ]
+          },
+          malaria: {
+            tag: 'Lây qua muỗi Anopheles',
+            title: 'Phòng chống sốt rét',
+            lead: 'Muỗi Anopheles hoạt động từ chạng vạng đến sáng; màn và tư vấn trước chuyến đi đều quan trọng.',
+            tips: [
+              'Sốt rét lây qua muỗi Anopheles, nguy cơ cao hơn từ hoàng hôn đến sáng sớm.',
+              'Ngủ trong màn tẩm hóa chất diệt muỗi; phun thuốc hoặc dùng hương muỗi trong nhà khi phù hợp.',
+              'Hỏi phòng khám du lịch trước khi vào rừng hoặc khu vực biên giới; chỉ dùng thuốc dự phòng khi được khuyên.'
+            ]
+          }
+        }
+      }
+    };
+
+    const SPECIES = [
+      {
+        id: 'elephant',
+        country: 'cn',
+        emoji: '🐘',
+        scientific: 'Elephas maximus',
+        theme: 'theme-elephant',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Elephas_maximus_%28Bandipur%29.jpg/960px-Elephas_maximus_%28Bandipur%29.jpg',
+        credit: 'Wikimedia Commons'
+      },
+      {
+        id: 'peafowl',
+        country: 'cn',
+        emoji: '🦚',
+        scientific: 'Pavo muticus',
+        theme: 'theme-peafowl',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Green_peafowl_%28Pavo_muticus%29%2C_Gembira_Loka_Zoo%2C_Yogyakarta%2C_2015-03-15.jpg/960px-Green_peafowl_%28Pavo_muticus%29%2C_Gembira_Loka_Zoo%2C_Yogyakarta%2C_2015-03-15.jpg',
+        credit: 'Wikimedia Commons'
+      },
+      {
+        id: 'mosquito',
+        country: 'th',
+        emoji: '🦟',
+        scientific: 'Aedes albopictus',
+        theme: 'theme-mosquito',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/CDC-Gathany-Aedes-albopictus-1.jpg/960px-CDC-Gathany-Aedes-albopictus-1.jpg',
+        credit: 'CDC / Wikimedia Commons'
+      },
+      {
+        id: 'monkey',
+        country: 'mm',
+        emoji: '🐒',
+        scientific: 'Rhinopithecus strykeri',
+        theme: 'theme-monkey',
+        image: 'https://inaturalist-open-data.s3.amazonaws.com/photos/249351045/large.jpg',
+        credit: 'Eric L. Chen / iNaturalist (CC BY-NC)'
+      },
+      {
+        id: 'tiger',
+        country: 'la',
+        emoji: '🐅',
+        scientific: 'Panthera tigris corbetti',
+        theme: 'theme-tiger',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Panthera_tigris_corbetti_01.jpg/960px-Panthera_tigris_corbetti_01.jpg',
+        credit: 'Wikimedia Commons'
+      },
+      {
+        id: 'tree',
+        country: 'vn',
+        emoji: '🌳',
+        scientific: 'Parashorea chinensis',
+        theme: 'theme-tree',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Parashorea_chinensis_Cho_chi.JPG/960px-Parashorea_chinensis_Cho_chi.JPG',
+        credit: 'Wikimedia Commons'
+      }
+    ];
+
+    const COUNTRY_ORDER = ['cn', 'mm', 'la', 'th', 'vn'];
+    const RIVER_ARCS = [
+      { span: '1 / 2', curve: 'is-dip' },
+      { span: '2 / 4', curve: 'is-crest' },
+      { span: '4 / 6', curve: 'is-dip' },
+      { span: '6 / 8', curve: 'is-crest' },
+      { span: '8 / 10', curve: 'is-dip' },
+      { span: '10 / 11', curve: 'is-crest' }
+    ];
+    const HEALTH_ORDER = ['dengue', 'malaria'];
+    const HEALTH_EMOJI = { dengue: '🦟', malaria: '🌡️' };
+    const HEALTH_MARK = { dengue: '✚', malaria: '◌' };
+    const KEYWORDS = ['登革热', '醋', 'dengue', 'vinegar', 'ไข้เลือดออก', 'น้ำส้มสายชู', 'sốt xuất huyết', 'giấm'];
+    const failedImageSources = new Set();
+
+    const state = {
+      lang: 'zh',
+      country: 'cn',
+      selectedSpeciesId: null,
+      lastResultKey: null,
+      typeTimer: null,
+      typeToken: 0,
+      lastFocusedElement: null
+    };
+
+    const langSwitch = document.getElementById('langSwitch');
+    const riverStage = document.getElementById('riverStage');
+    const speciesGrid = document.getElementById('speciesGrid');
+    const healthStack = document.getElementById('healthStack');
+    const countBadge = document.getElementById('countBadge');
+    const verifyForm = document.getElementById('verifyForm');
+    const verifyInput = document.getElementById('verifyInput');
+    const aiAnswer = document.getElementById('aiAnswer');
+    const aiWarning = document.getElementById('aiWarning');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const modalCountry = document.getElementById('modalCountry');
+    const modalVisual = document.getElementById('modalVisual');
+    const modalPhotoFrame = document.getElementById('modalPhotoFrame');
+    const modalImage = document.getElementById('modalImage');
+    const modalFallbackNote = document.getElementById('modalFallbackNote');
+    const modalCredit = document.getElementById('modalCredit');
+    const modalSci = document.getElementById('modalSci');
+    const modalEmoji = document.getElementById('modalEmoji');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalShort = document.getElementById('modalShort');
+    const modalDetail = document.getElementById('modalDetail');
+
+    function getPath(object, path) {
+      return path.split('.').reduce((current, key) => {
+        return current && Object.prototype.hasOwnProperty.call(current, key) ? current[key] : undefined;
+      }, object);
+    }
+
+    function getDictionary() {
+      return i18n[state.lang];
+    }
+
+    function buildPhotoAlt(copy, species) {
+      const dictionary = getDictionary();
+      return dictionary.ui.photoAlt
+        .replace('{name}', copy.name)
+        .replace('{scientific}', species.scientific);
+    }
+
+    function prepareImage(image, frame, species, copy) {
+      const source = species.image;
+      const failed = failedImageSources.has(source);
+
+      image.alt = buildPhotoAlt(copy, species);
+      image.dataset.src = source;
+      image.hidden = failed;
+
+      if (frame) {
+        frame.classList.toggle('is-failed', failed);
+      }
+
+      if (failed) {
+        image.removeAttribute('src');
+        return;
+      }
+
+      if (image.getAttribute('src') !== source) {
+        image.setAttribute('src', source);
+      }
+    }
+
+    function handleSpeciesImageError(image) {
+      const source = image.getAttribute('data-src') || image.currentSrc || image.src;
+      if (source) {
+        failedImageSources.add(source);
+      }
+
+      image.hidden = true;
+      const frame = image.closest('.photo-frame');
+      if (frame) {
+        frame.classList.add('is-failed');
+      }
+    }
+
+    function applyStaticTranslations() {
+      const dictionary = getDictionary();
+
+      document.documentElement.lang = dictionary.meta.htmlLang;
+      document.title = dictionary.meta.title;
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const value = getPath(dictionary, element.dataset.i18n);
+        if (value !== undefined) {
+          element.textContent = value;
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+        const value = getPath(dictionary, element.dataset.i18nPlaceholder);
+        if (value !== undefined) {
+          element.setAttribute('placeholder', value);
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+        const value = getPath(dictionary, element.dataset.i18nAria);
+        if (value !== undefined) {
+          element.setAttribute('aria-label', value);
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach((button) => {
+        const isActive = button.dataset.lang === state.lang;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+    }
+
+    function renderRiverMap() {
+      const dictionary = getDictionary();
+      riverStage.innerHTML = '';
+
+      RIVER_ARCS.forEach((arc, index) => {
+        const arcElement = document.createElement('span');
+        arcElement.className = 'river-arc ' + arc.curve;
+        arcElement.setAttribute('aria-hidden', 'true');
+        arcElement.style.gridColumn = arc.span;
+        arcElement.style.animationDelay = (index * 0.32) + 's';
+        riverStage.appendChild(arcElement);
+      });
+
+      COUNTRY_ORDER.forEach((countryCode, index) => {
+        const regionCopy = dictionary.mapRegions[countryCode];
+        const node = document.createElement('button');
+        node.type = 'button';
+        node.className = 'river-node' + (state.country === countryCode ? ' is-active' : '');
+        node.dataset.country = countryCode;
+        node.style.gridColumn = ((index * 2) + 1) + ' / ' + ((index * 2) + 3);
+        node.setAttribute('aria-pressed', String(state.country === countryCode));
+        node.innerHTML = '<span class="river-node-name">' + regionCopy.name + '</span>';
+        riverStage.appendChild(node);
+      });
+
+      const stageLabel = document.createElement('span');
+      stageLabel.className = 'river-stage-label';
+      stageLabel.textContent = dictionary.ui.mapRiver;
+      riverStage.appendChild(stageLabel);
+
+      const countrySpecies = SPECIES.filter((item) => item.country === state.country);
+      const countText = dictionary.ui.speciesCount.replace('{n}', String(countrySpecies.length));
+      countBadge.textContent = dictionary.countries[state.country] + ' · ' + countText;
+    }
+
+    function renderSpeciesGrid() {
+      const dictionary = getDictionary();
+      const countrySpecies = SPECIES.filter((item) => item.country === state.country);
+
+      speciesGrid.innerHTML = '';
+
+      countrySpecies.forEach((species) => {
+        const copy = dictionary.species[species.id];
+        const altText = buildPhotoAlt(copy, species);
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'species-card';
+        card.dataset.speciesId = species.id;
+
+        card.innerHTML =
+          '<span class="species-visual ' + species.theme + '">' +
+            '<span class="photo-frame species-photo-frame">' +
+              '<span class="species-photo-fallback" aria-hidden="true">' +
+                '<span class="species-emoji" aria-hidden="true">' + species.emoji + '</span>' +
+                '<span class="species-fallback-note">' + dictionary.ui.imageFailed + '</span>' +
+              '</span>' +
+              '<img class="species-photo" alt="' + altText + '" decoding="async" data-src="' + species.image + '" onerror="handleSpeciesImageError(this)">' +
+            '</span>' +
+            '<span class="species-sci">' + species.scientific + '</span>' +
+          '</span>' +
+          '<span class="species-copy">' +
+            '<span class="micro-label">' + dictionary.ui.speciesLabel + '</span>' +
+            '<span class="species-name">' + copy.name + '</span>' +
+            '<span class="species-short">' + copy.short + '</span>' +
+            '<span class="detail-cue">' + dictionary.ui.viewDetail + '<span class="detail-arrow" aria-hidden="true">→</span></span>' +
+          '</span>';
+
+        speciesGrid.appendChild(card);
+
+        prepareImage(
+          card.querySelector('.species-photo'),
+          card.querySelector('.photo-frame'),
+          species,
+          copy
+        );
+      });
+    }
+
+    function renderHealthCards() {
+      const dictionary = getDictionary();
+      healthStack.innerHTML = '';
+
+      HEALTH_ORDER.forEach((healthKey) => {
+        const health = dictionary.health[healthKey];
+        const article = document.createElement('article');
+        article.className = 'health-card';
+
+        const tips = health.tips
+          .map((tip) => '<li class="tip"><span class="tip-dot" aria-hidden="true"></span><span>' + tip + '</span></li>')
+          .join('');
+
+        article.innerHTML =
+          '<div class="health-head">' +
+            '<span class="health-icon" aria-hidden="true">' + HEALTH_EMOJI[healthKey] + '</span>' +
+            '<div class="health-title-group">' +
+              '<span class="health-tag">' + health.tag + '</span>' +
+              '<h3>' + health.title + '</h3>' +
+            '</div>' +
+            '<span class="health-watermark" aria-hidden="true">' + HEALTH_MARK[healthKey] + '</span>' +
+          '</div>' +
+          '<p class="health-lead">' + health.lead + '</p>' +
+          '<ul class="tip-list">' + tips + '</ul>';
+
+        healthStack.appendChild(article);
+      });
+    }
+
+    function renderAIText() {
+      const dictionary = getDictionary();
+
+      cancelTyping();
+
+      if (state.lastResultKey) {
+        showResultInstant(state.lastResultKey);
+      } else {
+        aiAnswer.textContent = dictionary.ui.aiIdle;
+        aiAnswer.className = 'ai-answer is-idle';
+        aiWarning.textContent = dictionary.ui.aiWarning;
+        aiWarning.hidden = true;
+      }
+    }
+
+    function renderAll() {
+      applyStaticTranslations();
+      renderRiverMap();
+      renderSpeciesGrid();
+      renderHealthCards();
+      renderAIText();
+
+      if (state.selectedSpeciesId) {
+        updateModalContent(state.selectedSpeciesId);
+      }
+    }
+
+    function findSpecies(speciesId) {
+      return SPECIES.find((item) => item.id === speciesId);
+    }
+
+    function updateModalContent(speciesId) {
+      const species = findSpecies(speciesId);
+      if (!species) {
+        return;
+      }
+
+      const dictionary = getDictionary();
+      const copy = dictionary.species[species.id];
+
+      modalCountry.textContent = dictionary.ui.distribution + ' · ' + dictionary.countries[species.country];
+      modalVisual.className = 'modal-visual ' + species.theme;
+      modalSci.textContent = species.scientific;
+      modalEmoji.textContent = species.emoji;
+      modalFallbackNote.textContent = dictionary.ui.imageFallback;
+      modalCredit.textContent = dictionary.ui.photoCredit.replace('{credit}', species.credit);
+      modalTitle.textContent = copy.name;
+      modalShort.textContent = copy.short;
+      modalDetail.textContent = copy.detail;
+      prepareImage(modalImage, modalPhotoFrame, species, copy);
+    }
+
+    function openModal(speciesId) {
+      const species = findSpecies(speciesId);
+      if (!species) {
+        return;
+      }
+
+      state.selectedSpeciesId = speciesId;
+      state.lastFocusedElement = document.activeElement;
+      updateModalContent(speciesId);
+
+      modalOverlay.classList.add('is-open');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      window.requestAnimationFrame(() => {
+        modalClose.focus();
+      });
+    }
+
+    function closeModal() {
+      if (!modalOverlay.classList.contains('is-open')) {
+        return;
+      }
+
+      modalOverlay.classList.remove('is-open');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      state.selectedSpeciesId = null;
+
+      if (state.lastFocusedElement && typeof state.lastFocusedElement.focus === 'function') {
+        state.lastFocusedElement.focus();
+      }
+    }
+
+    function cancelTyping() {
+      if (state.typeTimer !== null) {
+        window.clearTimeout(state.typeTimer);
+        state.typeTimer = null;
+      }
+      state.typeToken += 1;
+      aiAnswer.classList.remove('is-typing');
+    }
+
+    function showResultInstant(resultKey) {
+      const dictionary = getDictionary();
+      const text = dictionary.ui[resultKey];
+
+      cancelTyping();
+      aiAnswer.textContent = text;
+      aiAnswer.className = 'ai-answer';
+      aiWarning.textContent = dictionary.ui.aiWarning;
+      aiWarning.hidden = false;
+    }
+
+    function finishTyping(resultKey, languageAtStart) {
+      if (state.lang !== languageAtStart) {
+        return;
+      }
+
+      const dictionary = getDictionary();
+      state.typeTimer = null;
+      aiAnswer.classList.remove('is-typing');
+      aiWarning.textContent = dictionary.ui.aiWarning;
+      aiWarning.hidden = false;
+      state.lastResultKey = resultKey;
+    }
+
+    function typeResult(resultKey) {
+      const dictionary = getDictionary();
+      const languageAtStart = state.lang;
+      const fullText = dictionary.ui[resultKey];
+      const characters = Array.from(fullText);
+
+      cancelTyping();
+      state.lastResultKey = resultKey;
+      state.typeToken += 1;
+      const token = state.typeToken;
+
+      aiAnswer.textContent = '';
+      aiAnswer.className = 'ai-answer is-typing';
+      aiWarning.hidden = true;
+
+      let index = 0;
+
+      function advance() {
+        if (token !== state.typeToken || state.lang !== languageAtStart) {
+          return;
+        }
+
+        index += 1;
+        aiAnswer.textContent = characters.slice(0, index).join('');
+
+        if (index < characters.length) {
+          state.typeTimer = window.setTimeout(advance, 17);
+        } else {
+          finishTyping(resultKey, languageAtStart);
+        }
+      }
+
+      advance();
+    }
+
+    function verifyClaim() {
+      const value = verifyInput.value.trim().toLocaleLowerCase();
+      const hasSensitiveKeyword = KEYWORDS.some((keyword) => value.includes(keyword.toLocaleLowerCase()));
+      const resultKey = hasSensitiveKeyword ? 'result1' : 'result2';
+      typeResult(resultKey);
+    }
+
+    langSwitch.addEventListener('click', (event) => {
+      const button = event.target.closest('.lang-btn');
+      if (!button) {
+        return;
+      }
+
+      const nextLanguage = button.dataset.lang;
+      if (!i18n[nextLanguage] || nextLanguage === state.lang) {
+        return;
+      }
+
+      state.lang = nextLanguage;
+      renderAll();
+    });
+
+    riverStage.addEventListener('click', (event) => {
+      const node = event.target.closest('.river-node');
+      if (!node) {
+        return;
+      }
+
+      const nextCountry = node.dataset.country;
+      if (!nextCountry || nextCountry === state.country) {
+        return;
+      }
+
+      state.country = nextCountry;
+      renderRiverMap();
+      renderSpeciesGrid();
+    });
+
+    speciesGrid.addEventListener('click', (event) => {
+      const card = event.target.closest('.species-card');
+      if (!card) {
+        return;
+      }
+
+      openModal(card.dataset.speciesId);
+    });
+
+    verifyForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      verifyClaim();
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    modalOverlay.addEventListener('click', (event) => {
+      if (event.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modalOverlay.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>
